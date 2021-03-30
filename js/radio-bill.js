@@ -24,14 +24,14 @@ radioBillAddBtn.addEventListener('click', () => {
     //reference the checked button
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
     if (checkedRadioBtn){
-    var billItemType = checkedRadioBtn.value;
+        var billItemType = checkedRadioBtn.value;
     }
 
     //add appropriate ammounts to appropriate totals
     if(billItemType === 'call'){
         callTotal += 2.75
     }else if(billItemType = 'sms'){
-        smsTotal += 0.65
+        smsTotal += 0.75
     }else {
         callTotal += 0;
         smsTotal+= 0;
