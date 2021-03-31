@@ -24,9 +24,9 @@ var warningSettings = 0;
 var criticalSettings = 0;
 
 // create a variables that will keep track of all three totals.
-var callTotal = 0;
-var smsTotal = 0;
-var billTotal = 0;
+var settingsCallTotal = 0;
+var settingsSmsTotal = 0;
+var settingsBillTotal = 0;
 
 //add an event listener for when the 'Update settings' button is pressed
 updateSettings.addEventListener('click', () => {
@@ -45,28 +45,28 @@ addBill.addEventListener('click', () => {
     }
 
     //add to relevant totals when button is clicked
-    if(billType === 'call' && billTotal < parseFloat(criticalLevelSetting.value)) {
-        callTotal += parseFloat(callCostSetting.value)
-    }else if(billType = 'sms' && billTotal < parseFloat(criticalLevelSetting.value)){
-        smsTotal += parseFloat(smsCostSetting.value)
+    if(billType === 'call' && settingsBillTotal < parseFloat(criticalLevelSetting.value)) {
+        settingsCallTotal += parseFloat(callCostSetting.value)
+    }else if(billType = 'sms' && settingsBillTotal < parseFloat(criticalLevelSetting.value)){
+        settingsSmsTotal += parseFloat(smsCostSetting.value)
     }else{
-        callTotal += 0;
-        smsTotal += 0;
+        settingsCallTotal += 0;
+        settingsSmsTotal += 0;
     }
 
     //display totals on the webpage
-    callTotalSettings.innerHTML = callTotal.toFixed(2);
-    smsTotalSettings.innerHTML = smsTotal.toFixed(2);
-    billTotal = callTotal + smsTotal;
-    totalSettings.innerHTML = billTotal.toFixed(2);
+    callTotalSettings.innerHTML = settingsCallTotal.toFixed(2);
+    smsTotalSettings.innerHTML = settingsSmsTotal.toFixed(2);
+    settingsBillTotal = settingsCallTotal + settingsSmsTotal;
+    totalSettings.innerHTML = settingsBillTotal.toFixed(2);
 
     //change colors depending on total level
 
-    if(billTotal >= parseFloat(warningLevelSetting.value)){
+    if(settingsBillTotal >= parseFloat(warningLevelSetting.value)){
         totalSettings.classList.add('warning');
     }    
     
-    if(billTotal >= parseFloat(criticalLevelSetting.value)){
+    if(settingsBillTotal >= parseFloat(criticalLevelSetting.value)){
         totalSettings.classList.add('danger');
     }
 })

@@ -12,7 +12,7 @@ var calculateBtn = document.querySelector('.calculateBtn');
 //create the function that will be called when the calculate button is pressed
 function calculateBill() {
     //get a reference to the billTotal element
-    var billTotal = document.querySelector('.billTotal');
+    var calcBillTotal = document.querySelector('.billTotal');
     var calcTotal = 0;
     var billArr = billString.value.split(',');
     for (let i = 0; i < billArr.length; i++) {
@@ -23,7 +23,15 @@ function calculateBill() {
             calcTotal += 0.75;
         }
     }
-    billTotal.innerHTML = calcTotal.toFixed(2);
+    calcBillTotal.innerHTML = calcTotal.toFixed(2);
+
+    if(calcTotal > 20){
+        calcBillTotal.classList.add('warning');
+    }
+
+    if(calcTotal > 30){
+        calcBillTotal.classList.add('danger')
+    }
 }
 
 
