@@ -28,14 +28,6 @@ var settingsCallTotal = 0;
 var settingsSmsTotal = 0;
 var settingsBillTotal = 0;
 
-//add an event listener for when the 'Update settings' button is pressed
-updateSettings.addEventListener('click', () => {
-    smsSettings = smsCostSetting.value 
-    callSettings = callCostSetting.value
-    warningSettings = warningLevelSetting.value
-    criticalSettings = criticalLevelSetting.value
-})
-
 //add an event listener for when the add button is pressed
 addBill.addEventListener('click', () => {
     // get a reference to the sms or call radio buttons
@@ -54,6 +46,7 @@ addBill.addEventListener('click', () => {
         settingsSmsTotal += 0;
     }
 
+
     //display totals on the webpage
     callTotalSettings.innerHTML = settingsCallTotal.toFixed(2);
     smsTotalSettings.innerHTML = settingsSmsTotal.toFixed(2);
@@ -71,6 +64,21 @@ addBill.addEventListener('click', () => {
     }
 })
 
+//add an event listener for when the 'Update settings' button is pressed
+updateSettings.addEventListener('click', () => {
+    smsSettings = smsCostSetting.value 
+    callSettings = callCostSetting.value
+    warningSettings = warningLevelSetting.value
+    criticalSettings = criticalLevelSetting.value
+
+    if(parseFloat(warningLevelSetting.value) > settingsBillTotal){
+        totalSettings.classList.remove('warning');
+    }    
+    
+    if(parseFloat(criticalLevelSetting.value) > settingsBillTotal){
+        totalSettings.classList.remove('danger');
+    }
+    })
 
 // *in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
