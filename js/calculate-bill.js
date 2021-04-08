@@ -32,6 +32,14 @@ function calculateBill() {
     if(calcTotal > 30){
         calcBillTotal.classList.add('danger')
     }
+
+    if(calcTotal < 30){
+        calcBillTotal.classList.remove('danger')
+    }
+
+    if(calcTotal < 20) {
+        calcBillTotal.classList.remove('warning')
+    }
 }
 
 
